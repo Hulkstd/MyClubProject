@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1672ae48336502749b99346447f695cc
+timeCreated: 1526301901
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - target: {instanceID: 0}
+  - Bullet: {fileID: 1556044452705774, guid: cdf70b6c100f23a4fa1c5508138250d6, type: 2}
+  - partToRotate: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
