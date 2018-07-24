@@ -29,9 +29,9 @@ public class Movement : MonoBehaviour {
         transform.Translate(vec.normalized * MoveSpeed * Time.deltaTime, Space.World);
 
         Quaternion rotation = Quaternion.LookRotation
-            (WayPoint_transform[WayPointcount].position - transform.position, Vector3.left);
+            (WayPoint_transform[WayPointcount].position - transform.position,transform.TransformDirection(Vector3.back));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-
+        transform.Rotate(new Vector3(0, 0, 90f));
         //다음 웨이포인트와의 거리가 0.2f이하면 웨이포인트를 움직임
         if (Vector3.Distance(WayPoint_transform[WayPointcount].position, transform.position) <= 0.2f)
         {
