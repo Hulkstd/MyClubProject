@@ -69,7 +69,7 @@ public class ButtonEvent : MonoBehaviour {
         {
             return;
         }
-
+        mainGame.Money -= 500;
         UseSkill = true;
         StartCoroutine(CoolDown());
     }

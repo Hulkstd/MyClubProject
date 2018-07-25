@@ -8,7 +8,7 @@ public class LoadStage : MonoBehaviour {
     GameObject[,] maze;
     GameObject[,] backgrounds;
 
-    public Sprite[] wallSprite; /*벽1, 벽2, 플길1, 플길2, 타워1, 타워2*/
+    public Sprite[] wallSprite;
 
     // Use this for initialization
     void Start () {

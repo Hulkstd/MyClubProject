@@ -25,7 +25,7 @@ public class SpawnUnit : MonoBehaviour {
         if (unit != null)
         {
             unit.transform.position = spawnPoint.transform.position;
-
+            Camera.main.GetComponent<SpawnTower>().SpawnUnitcount++;
             unit.transform.SetParent(GameObject.Find("Players").transform);
         }
     }

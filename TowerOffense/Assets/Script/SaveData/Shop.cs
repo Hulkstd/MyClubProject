@@ -11,7 +11,7 @@ public class Shop : MonoBehaviour {
 
     public void Speed()
     {
-        if (upgrade.UpgradeCount > 0)
+        if (upgrade.UpgradeCount > 0 && upgrade.Speed < 5)
         {
             upgrade.Speed = 1;
             upgrade.UpgradeCount--;
@@ -20,7 +20,7 @@ public class Shop : MonoBehaviour {
 
     public void HP()
     {
-        if (upgrade.UpgradeCount > 0)
+        if (upgrade.UpgradeCount > 0 && upgrade.HP < 5)
         {
             upgrade.HP = 1;
             upgrade.UpgradeCount--;
@@ -29,7 +29,7 @@ public class Shop : MonoBehaviour {
 
     public void Damage()
     {
-        if (upgrade.UpgradeCount > 0)
+        if (upgrade.UpgradeCount > 0 && upgrade.Damage < 5)
         {
             upgrade.Damage = 1;
             upgrade.UpgradeCount--;
@@ -38,7 +38,7 @@ public class Shop : MonoBehaviour {
 
     public void Duration()
     {
-        if (upgrade.UpgradeCount > 0)
+        if (upgrade.UpgradeCount > 0 && upgrade.Duration < 5)
         {
             upgrade.Duration = 1;
             upgrade.UpgradeCount--;
@@ -47,7 +47,7 @@ public class Shop : MonoBehaviour {
 
     public void IncreaseEffect()
     {
-        if (upgrade.UpgradeCount > 0)
+        if (upgrade.UpgradeCount > 0 && upgrade.IncreaseEffect  < 5)
         {
             upgrade.IncreaseEffect = 1;
             upgrade.UpgradeCount--;
@@ -56,7 +56,7 @@ public class Shop : MonoBehaviour {
 
     public void GetSpeed()
     {
-        if (upgrade.UpgradeCount > 0)
+        if (upgrade.UpgradeCount > 0 && upgrade.GetSpeed < 5)
         {
             upgrade.GetSpeed = 1;
             upgrade.UpgradeCount--;
@@ -65,7 +65,7 @@ public class Shop : MonoBehaviour {
 
     public void Max()
     {
-        if (upgrade.UpgradeCount > 0)
+        if (upgrade.UpgradeCount > 0 && upgrade.Max < 5)
         {
             upgrade.Max = 1;
             upgrade.UpgradeCount--;
