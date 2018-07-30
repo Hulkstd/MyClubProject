@@ -45,7 +45,29 @@ public class MainGame : MonoBehaviour {
 
         unit.transform.position = position;
         unit.transform.SetParent(GameObject.Find("Units").transform);
-
+        unit.tag = "Unit";
+        unit.transform.GetChild(0).tag = "Unit";
         return unit;
+    }
+
+    public GameObject Find(Vector3 vec)
+    {
+        RaycastHit raycastHit;
+
+        //Debug.Log(vec);
+        
+        //Debug.DrawRay(vec, Vector3.forward * 10, Color.red, 0.5f);
+        
+        if (Physics.Raycast(vec, Vector3.forward ,out raycastHit, 100))
+        {
+            //Debug.Log("1");
+            if(raycastHit.transform.tag == "Unit")
+            {
+                //Debug.Log("1"); 
+                return raycastHit.transform.gameObject;
+            }
+        }
+
+        return null;
     }
 }
