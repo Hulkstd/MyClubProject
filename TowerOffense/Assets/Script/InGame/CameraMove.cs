@@ -90,7 +90,7 @@ public class CameraMove : MonoBehaviour {
         if (!Input.GetMouseButton(0)) return;
 
         Vector3 vec = Camera.main.WorldToViewportPoint(origin - Input.mousePosition);
-        Vector3 move = vec * 0.005f;
+        Vector3 move = vec.normalized;
         move.z = 0;
 
         transform.Translate(move);

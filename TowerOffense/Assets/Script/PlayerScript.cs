@@ -33,6 +33,7 @@ public class PlayerScript : MonoBehaviour {
         {
             Destroy(HPvar);
             Camera.main.GetComponent<MainGame>().DeleteUnit(transform.parent.gameObject);
+            Camera.main.GetComponent<SpawnWall>().KillCount++;
         }
 	}
 

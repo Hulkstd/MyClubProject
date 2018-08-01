@@ -37,7 +37,7 @@ public class SpawnTower : MonoBehaviour {
             count += 2;
 
             int x, y, LV;
-
+            
             x = int.Parse(lines[(height + 1) + 3 + count / 2].Split()[0]);
             y = int.Parse(lines[(height + 1) + 3 + count / 2].Split()[1]);
             LV = int.Parse(lines[(height + 1) + 3 + count / 2].Split()[2]);
@@ -72,6 +72,7 @@ public class SpawnTower : MonoBehaviour {
                     case '8':
                     case '9':
                         GameObject h = Spawn(new Vector3((width / 2) - width + x, (height / 2) - height + y, -1 ), int.Parse(lines[y+4].ToCharArray()[x].ToString()));
+                        Camera.main.GetComponent<MainGame>().AddTower(h);
                         break;
                 }
 

@@ -293,6 +293,7 @@
     <Compile Include="Assets\Script\InGame\PlayTime.cs" />
     <Compile Include="Assets\Script\InGame\SpawnTower.cs" />
     <Compile Include="Assets\Script\InGame\SpawnUnit.cs" />
+    <Compile Include="Assets\Script\InGame\SpawnWall.cs" />
     <Compile Include="Assets\Script\Movement.cs" />
     <Compile Include="Assets\Script\PlayerScript.cs" />
     <Compile Include="Assets\Script\SaveData\FileLoader.cs" />
@@ -308,6 +309,7 @@
     <None Include="Assets\Resources\Sprite\Shader\SheildFX.shader" />
     <None Include="Assets\Resources\Stage2.txt" />
     <None Include="Assets\Resources\Stage2_Enemy.txt" />
+    <None Include="Assets\Resources\Stage2_Wall.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
