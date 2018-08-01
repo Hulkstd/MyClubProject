@@ -44,16 +44,15 @@ public class MainGame : MonoBehaviour {
 
     void CheckField()
     {
-        copy = unit;
-            
         Debug.Log("2");
+        copy = unit;
+
         for (int j = 0; j < 20; j++)
         {
             for (int i = 0; i < 12; i++)
             {
                 if (unit[i, j] == null)
                 {
-                    Debug.Log("스폰중");
 
                     GameObject spawn = Resources.Load("Prefabs/" + character[Random.Range(0, 9)]) as GameObject;
 
@@ -96,11 +95,13 @@ public class MainGame : MonoBehaviour {
             {
                 if (unit[i, j] == null)
                 {
-                    Debug.Log("스폰중");
-
                     GameObject spawn = Resources.Load("Prefabs/" + character[Random.Range(0, 9)]) as GameObject;
 
                     unit[i, j] = Spawn(spawn, new Vector3((float)(-5.5 + i), (float)(-9.5 + j), -1.0f));
+                }
+                else
+                {
+                    unit[i, j].transform.position = new Vector3((float)(-5.5 + i), (float)(-9.5 + j), -1);
                 }
             }
         }
@@ -108,6 +109,7 @@ public class MainGame : MonoBehaviour {
 
     public bool CheckPang(GameObject a, GameObject b)
     {
+        CancelInvoke("CheckField");
         copy = unit;
 
         Vector2Int q, w;
@@ -141,12 +143,14 @@ public class MainGame : MonoBehaviour {
 
         if(!Check1 && !Check2)
         {
-            Debug.Log("1");
+            InvokeRepeating("CheckField", 0f, 0.5f);
             return false;
         }
 
         DownUnit();
-        
+
+        InvokeRepeating("CheckField", 0f, 0.5f);
+
         return true;
     }
 
@@ -154,14 +158,11 @@ public class MainGame : MonoBehaviour {
     {
         bool flag = false;
         List<Vector2Int> CheckList = new List<Vector2Int>();
-
-        CheckList.Add(new Vector2Int(x, y));
+        
         if (!(x - 2 < 0 || x > 11 || y < 0 || y > 19 ))
         {
             if (copy[x, y].name == copy[x - 1, y].name && copy[x, y].name == copy[x - 2, y].name)
             {
-                CheckList.Add(new Vector2Int(x - 1, y));
-                CheckList.Add(new Vector2Int(x - 2, y));
                 flag = true;
             }
         }
@@ -170,8 +171,6 @@ public class MainGame : MonoBehaviour {
         {
             if (copy[x, y].name == copy[x - 1, y].name && copy[x, y].name == copy[x + 1, y].name)
             {
-                CheckList.Add(new Vector2Int(x - 1, y));
-                CheckList.Add(new Vector2Int(x + 1, y));
                 flag = true;
             }
         }
@@ -181,8 +180,6 @@ public class MainGame : MonoBehaviour {
         {
             if (copy[x, y].name == copy[x + 2, y].name && copy[x, y].name == copy[x + 1, y].name)
             {
-                CheckList.Add(new Vector2Int(x + 2, y));
-                CheckList.Add(new Vector2Int(x + 1, y));
                 flag = true;
             }
         }
@@ -191,8 +188,6 @@ public class MainGame : MonoBehaviour {
         {
             if (copy[x, y].name == copy[x, y + 1].name && copy[x, y].name == copy[x, y + 2].name)
             {
-                CheckList.Add(new Vector2Int(x, y + 2));
-                CheckList.Add(new Vector2Int(x, y + 1));
                 flag = true;
             }
         }
@@ -201,8 +196,6 @@ public class MainGame : MonoBehaviour {
         {
             if (copy[x, y].name == copy[x, y + 1].name && copy[x, y].name == copy[x, y - 1].name)
             {
-                CheckList.Add(new Vector2Int(x, y - 1));
-                CheckList.Add(new Vector2Int(x, y + 1));
                 flag = true;
             }
         }
@@ -211,8 +204,6 @@ public class MainGame : MonoBehaviour {
         {
             if (copy[x, y].name == copy[x, y - 2].name && copy[x, y].name == copy[x, y - 1].name)
             {
-                CheckList.Add(new Vector2Int(x, y - 2));
-                CheckList.Add(new Vector2Int(x, y - 1));
                 flag = true;
             }
         }
@@ -221,17 +212,80 @@ public class MainGame : MonoBehaviour {
         {
             return false;
         }
-
-        foreach(var item in CheckList)
+        else
         {
-            if (unit[item.x, item.y] != null)
+            CheckList = DFS(x, y);
+        }
+
+        foreach (var item in CheckList)
+        {
+            Destroy(unit[item.x, item.y]);
+            unit[item.x, item.y] = null;
+        }
+
+        DownUnit();
+
+        return true;
+    }
+
+    List<Vector2Int> DFS(int x, int y)
+    {
+        GameObject[,] copyofcopy = copy.Clone() as GameObject[,];
+        List<Vector2Int> CheckList = new List<Vector2Int>();
+        string name = unit[x, y].name;
+
+        Queue<Vector2Int> queue = new Queue<Vector2Int>();
+
+        queue.Enqueue(new Vector2Int(x, y));
+        CheckList.Add(new Vector2Int(x, y));
+        copyofcopy[x, y] = null;
+
+        while (queue.Count != 0)
+        {
+            Vector2Int vec = queue.Dequeue();
+
+            if (vec.x+1 < 12 && copyofcopy[vec.x + 1, vec.y] != null)
             {
-                Destroy(unit[item.x, item.y]);
-                unit[item.x, item.y] = null;
+                if (name == copyofcopy[vec.x + 1, vec.y].name)
+                {
+                    queue.Enqueue(new Vector2Int(vec.x + 1, vec.y));
+                    CheckList.Add(new Vector2Int(vec.x + 1, vec.y));
+                    copyofcopy[vec.x + 1, vec.y] = null;
+                }
+            }
+
+            if (vec.x - 1 > 0 && copyofcopy[vec.x - 1, vec.y] != null)
+            {
+                if (name == copyofcopy[vec.x - 1, vec.y].name)
+                {
+                    queue.Enqueue(new Vector2Int(vec.x - 1, vec.y));
+                    CheckList.Add(new Vector2Int(vec.x - 1, vec.y));
+                    copyofcopy[vec.x - 1, vec.y] = null;
+                }
+            }
+
+            if (vec.y + 1 < 20 && copyofcopy[vec.x, vec.y + 1] != null)
+            {
+                if (name == copyofcopy[vec.x, vec.y + 1].name)
+                {
+                    queue.Enqueue(new Vector2Int(vec.x, vec.y + 1));
+                    CheckList.Add(new Vector2Int(vec.x, vec.y + 1));
+                    copyofcopy[vec.x, vec.y + 1] = null;
+                }
+            }
+
+            if (vec.y - 1 > 0 && copyofcopy[vec.x, vec.y - 1] != null)
+            {
+                if (name == copyofcopy[vec.x, vec.y - 1].name)
+                {
+                    queue.Enqueue(new Vector2Int(vec.x, vec.y - 1));
+                    CheckList.Add(new Vector2Int(vec.x, vec.y - 1));
+                    copyofcopy[vec.x, vec.y - 1] = null;
+                }
             }
         }
 
-        return true;
+        return CheckList;
     }
 
     public GameObject Spawn(GameObject g, Vector3 position)

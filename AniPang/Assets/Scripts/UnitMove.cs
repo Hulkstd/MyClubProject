@@ -64,7 +64,6 @@ public class UnitMove : MonoBehaviour {
 
             if(Camera.main.GetComponent<MainGame>().CheckPang(nowUnit, clickUnit))
             {
-                Debug.Log("나 들옴");
                 Vector3 tmp = nowUnit.transform.position;
                 nowUnit.transform.position = clickUnit.transform.position;
                 clickUnit.transform.position = tmp;
