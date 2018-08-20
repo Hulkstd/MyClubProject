@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBall : MonoBehaviour{
     public Vector2 velocity;
 
-    Rigidbody2D rig;
+    public Rigidbody2D rig;
     MainGame mainGame;
 
     // Use this for initialization
@@ -19,8 +19,8 @@ public class MoveBall : MonoBehaviour{
 
     // Update is called once per frame
     void Update()
-    { 
-
+    {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2.64f, 2.64f), Mathf.Clamp(transform.position.y, -3.8f, 4.826f), 0);
     }
     
     private void OnTriggerEnter2D(Collider2D collision)

@@ -22,6 +22,8 @@ public class Floor : MonoBehaviour {
         if (position == Vector3.zero)
         {
             position = collision.transform.position;
+            position.y = -3.8f;
+            collision.transform.SetPositionAndRotation(position, collision.transform.rotation);
         }
         else
         {
@@ -35,6 +37,15 @@ public class Floor : MonoBehaviour {
                 }
             }
         }
+
+        if(collision.GetComponent<MoveBall>() != null)
+        {
+            collision.GetComponent<MoveBall>().rig.velocity = Vector2.zero;
+            collision.GetComponent<MoveBall>().velocity = Vector2.zero;
+
+            Camera.main.GetComponent<MainGame>().SetVelocity(collision.gameObject, collision.GetComponent<MoveBall>().velocity);
+        }
+
         count++;
     }
 }

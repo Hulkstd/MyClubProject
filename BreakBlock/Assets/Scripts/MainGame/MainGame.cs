@@ -15,6 +15,7 @@ public class MainGame : MonoBehaviour
     List<GameObject> Balls = new List<GameObject>();
 
     GameObject BallsObject;
+    bool Flag = true;
 
     // Use this for initialization
     void Start()
@@ -30,9 +31,15 @@ public class MainGame : MonoBehaviour
         //Debug.Log(Floor.count + " " + rig.Count);
         if (Floor.count == rig.Count)
         {
+            if(!Flag)
+            {
+                Flag = true;
+                GameObject g = Instantiate(Resources.Load("Ball"), BallsObject.transform, false) as GameObject;
+                g.transform.position = tmp.transform.position;
+            }
 
             if (Input.GetMouseButtonDown(0))
-            {
+            { 
                 origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 InsArrow = Instantiate(Arrow, origin - new Vector3(0, 0, -9), transform.rotation);
             }
@@ -61,9 +68,6 @@ public class MainGame : MonoBehaviour
                     Destroy(InsArrow);
                     return;
                 }
-
-                Instantiate(Resources.Load("Ball") as GameObject, Balls[0].transform.position, Balls[0].transform.rotation, BallsObject.transform);
-
                 Vector3 move = origin - nowPosition;
 
                 StartCoroutine("ShootBall", move);
@@ -75,6 +79,10 @@ public class MainGame : MonoBehaviour
                 velocity = rig.velocity;
                 */
             }
+        }
+        else
+        {
+            Flag = false;
         }
     }
 
