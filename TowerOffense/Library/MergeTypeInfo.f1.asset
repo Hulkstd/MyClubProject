@@ -55,6 +55,16 @@ MergeTypeInfo:
   conflicts: ''}
 - {id: 122, name: Halo, ismulti: 0, baseid: 8, requires: 04000000, conflicts: ''}
 - {id: 125, name: HaloLayer, ismulti: 0, baseid: 8, requires: '', conflicts: ''}
+- {id: 895512359, name: AimConstraint, ismulti: 0, baseid: 285090594, requires: 04000000,
+  conflicts: ''}
+- {id: 1773428102, name: ParentConstraint, ismulti: 0, baseid: 285090594, requires: 04000000,
+  conflicts: ''}
+- {id: 1818360608, name: PositionConstraint, ismulti: 0, baseid: 285090594, requires: 04000000,
+  conflicts: ''}
+- {id: 1818360609, name: RotationConstraint, ismulti: 0, baseid: 285090594, requires: 04000000,
+  conflicts: ''}
+- {id: 1818360610, name: ScaleConstraint, ismulti: 0, baseid: 285090594, requires: 04000000,
+  conflicts: ''}
 - {id: 232, name: DistanceJoint2D, ismulti: 1, baseid: 229, requires: 0400000032000000,
   conflicts: 3600000038000000390000004b000000}
 - {id: 255, name: FixedJoint2D, ismulti: 1, baseid: 229, requires: 0400000032000000,
@@ -129,6 +139,8 @@ MergeTypeInfo:
   conflicts: ''}
 - {id: 331, name: SpriteMask, ismulti: 0, baseid: 25, requires: 04000000, conflicts: ''}
 - {id: 212, name: SpriteRenderer, ismulti: 0, baseid: 25, requires: 04000000, conflicts: 1700000021000000d894d41c}
+- {id: 1971053207, name: SpriteShapeRenderer, ismulti: 0, baseid: 25, requires: 04000000,
+  conflicts: ''}
 - {id: 483693784, name: TilemapRenderer, ismulti: 0, baseid: 25, requires: 04000000bd22a86d,
   conflicts: 1700000021000000d4000000}
 - {id: 96, name: TrailRenderer, ismulti: 0, baseid: 25, requires: 04000000, conflicts: ''}
@@ -151,6 +163,8 @@ MergeTypeInfo:
 - {id: 1109, name: AnimatorTransition, ismulti: 0, baseid: 1111, requires: '', conflicts: ''}
 - {id: 142, name: AssetBundle, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 290, name: AssetBundleManifest, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
+- {id: 369655926, name: AssetImportInProgressProxy, ismulti: 0, baseid: 130, requires: '',
+  conflicts: ''}
 - {id: 1766753193, name: AssemblyDefinitionImporter, ismulti: 0, baseid: 1003, requires: '',
   conflicts: ''}
 - {id: 1020, name: AudioImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
@@ -176,6 +190,7 @@ MergeTypeInfo:
 - {id: 1006, name: TextureImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1042, name: TrueTypeFontImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1127, name: VideoClipImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
+- {id: 41386430, name: AssetImporterLog, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 240, name: AudioMixer, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 241, name: AudioMixerController, ismulti: 0, baseid: 240, requires: '', conflicts: ''}
 - {id: 244, name: AudioMixerEffectController, ismulti: 0, baseid: 130, requires: '',
@@ -197,6 +212,8 @@ MergeTypeInfo:
 - {id: 72, name: ComputeShader, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 1029, name: DefaultAsset, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 1032, name: SceneAsset, ismulti: 0, baseid: 1029, requires: '', conflicts: ''}
+- {id: 426301858, name: EditorProjectAccess, ismulti: 0, baseid: 130, requires: '',
+  conflicts: ''}
 - {id: 121, name: Flare, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 128, name: Font, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 1268269756, name: GameObjectRecorder, ismulti: 0, baseid: 130, requires: '',
@@ -218,6 +235,7 @@ MergeTypeInfo:
 - {id: 134, name: PhysicMaterial, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 62, name: PhysicsMaterial2D, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 150, name: PreloadData, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
+- {id: 181963792, name: Preset, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 91, name: AnimatorController, ismulti: 0, baseid: 93, requires: '', conflicts: ''}
 - {id: 221, name: AnimatorOverrideController, ismulti: 0, baseid: 93, requires: '',
   conflicts: ''}
@@ -287,7 +305,10 @@ MergeTypeInfo:
 - {id: 1026, name: HierarchyState, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
 - {id: 1048, name: InspectorExpandedState, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
 - {id: 1126, name: PackedAssets, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
+- {id: 877146078, name: PlatformModuleSetup, ismulti: 0, baseid: 0, requires: '',
+  conflicts: ''}
 - {id: 1001, name: Prefab, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
+- {id: 1386491679, name: PresetManager, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
 - {id: 1571458007, name: RenderPassAttachment, ismulti: 0, baseid: 0, requires: '',
   conflicts: ''}
 - {id: 638013454, name: SpriteAtlasDatabase, ismulti: 0, baseid: 0, requires: '',

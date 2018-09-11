@@ -124,7 +124,7 @@ public class MainGame : MonoBehaviour {
 
     void MakeMoney()
     {
-        if (totalMoney >= 10000 + 10000 * upgradeList.Max /* 업그레이드에 따라 총량 +: 10000 * (업그레이드 횟수) */)
+        if (totalMoney >= 9900 + 10000 * upgradeList.Max /* 업그레이드에 따라 총량 +: 10000 * (업그레이드 횟수) */)
         {
             CancelInvoke("MakeMoney");
         }
@@ -140,7 +140,8 @@ public class MainGame : MonoBehaviour {
         {
             if(Money < 100)
             {
-                IsGameEnd = true;
+                if(Units.Count == 0)
+                    IsGameEnd = true;
             }
         }
 	}
